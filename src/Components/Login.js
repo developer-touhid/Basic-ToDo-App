@@ -1,39 +1,119 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 
 const Login = () => {
 
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+  const [addClass, setAddClass] = useState('form-container');
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log('Email:' + email, 'Password:' + pass);
+  const addClassName = () => {
+    if (addClass === 'form-container sign-up-mode') {
+      setAddClass('form-container')
+    } else {
+      setAddClass('form-container sign-up-mode')
     }
+  };
 
-    return (
-        <>
-            <NavBar />
-            <div className="container">
-            <h3 className="text-center m-5">Login Here</h3>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <div className="mb-3 row">
-                        <label for="staticEmail" className="col-sm-2 col-form-label">Email</label>
-                        <div className="col-sm-10">
-                            <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} />
-                        </div>
-                    </div>
-                    <div className="mb-3 row">
-                        <label for="inputPassword" className="col-sm-2 col-form-label">Password</label>
-                        <div className="col-sm-10">
-                            <input type="password" className="form-control" onChange={(e) => setPass(e.target.value)} />
-                        </div>
-                    </div>
-                    <button className="btn btn-primary">Login</button>
-                </form>
+  return (
+    <>
+      <NavBar />
+      <div className="body-bg">
+        <div className={addClass}>
+          <div className="forms-container">
+            <div className="signin-signup">
+              <form action="#" className="sign-in-form">
+                <h2 className="title">Sign in</h2>
+                <div className="input-field">
+                  <i className="fas fa-user"></i>
+                  <input type="text" placeholder="Username" />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" />
+                </div>
+                <input type="submit" value="Login" className="button solid" />
+                <p className="social-text">Or Sign in with social platforms</p>
+                <div className="social-media">
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-facebook-f"></i>
+                  </Link>
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-twitter"></i>
+                  </Link>
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-google"></i>
+                  </Link>
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-linkedin-in"></i>
+                  </Link>
+                </div>
+              </form>
+              <form action="#" className="sign-up-form">
+                <h2 className="title">Sign up</h2>
+                <div className="input-field">
+                  <i className="fas fa-user"></i>
+                  <input type="text" placeholder="Username" />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input type="email" placeholder="Email" />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" />
+                </div>
+                <input type="submit" className="button" value="Sign up" />
+                <p className="social-text">Or Sign up with social platforms</p>
+                <div className="social-media">
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-facebook-f"></i>
+                  </Link>
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-twitter"></i>
+                  </Link>
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-google"></i>
+                  </Link>
+                  <Link href="#" className="social-icon">
+                    <i className="fab fa-linkedin-in"></i>
+                  </Link>
+                </div>
+              </form>
             </div>
-        </>
-    );
+          </div>
+
+          <div className="panels-container">
+            <div className="panel left-panel">
+              <div className="content">
+                <h3>New here ?</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+                  ex ratione. Aliquid!
+                </p>
+                <button className="button transparent" id="sign-up-button" onClick={() => addClassName()}>
+                  Sign up
+                </button>
+              </div>
+              <img src="" className="image imagesign-up" alt="" />
+            </div>
+            <div className="panel right-panel">
+              <div className="content">
+                <h3>One of us ?</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+                  laboriosam ad deleniti.
+                </p>
+                <button className="button transparent" id="sign-in-button" onClick={() => addClassName()}>
+                  Sign in
+                </button>
+              </div>
+              <img src="" className="image imagesign-in" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Login;
